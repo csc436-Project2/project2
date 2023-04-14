@@ -1,6 +1,7 @@
 /** @format */
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Component } from "react";
+import Header from "./Components/Header";
 
 import axios from "axios";
 
@@ -24,6 +25,7 @@ function App() {
   console.log(data);
   return (
     <div className="App">
+      <Header />
       Posts:
       {data.map((post) => {
         return <p key={post.id}>Title: {post.title}</p>;
