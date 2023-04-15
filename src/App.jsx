@@ -1,7 +1,6 @@
 /** @format */
 
-import { useState, useEffect, Component } from "react";
-import Header from "./Components/Header";
+import { useState, useEffect } from "react";
 
 import axios from "axios";
 
@@ -24,8 +23,7 @@ function App() {
   }
   console.log(data);
   return (
-    <div className="App">
-      <Header />
+    <div className='App'>
       Posts:
       {data.map((post) => {
         return <p key={post.id}>Title: {post.title}</p>;
@@ -35,6 +33,41 @@ function App() {
 }
 
 export default App;
+
+// import { useState } from 'react';
+// import { Routes, Route, Link } from 'react-router-dom';
+
+// import './App.css';
+// import LoginForm from './components/LoginForm';
+// import RegisterForm from './components/RegisterForm';
+// import WelcomePage from './components/WelcomePage';
+// import { TOKEN_NAME } from './utils/constants';
+
+// function App({ authenticated }) {
+//   const [userData,] = useState(() => {
+//     return localStorage.getItem(TOKEN_NAME);
+//   })
+
+//   return (
+//     <div className="App">
+//       <p>
+//         <Link to="/register">Register</Link> | <Link to="/login">Login</Link>{' '}| <Link to="/welcome">Welcome</Link>{' '}
+//       </p>
+//       <Routes>
+//         <Route path="/login" element={<LoginForm />} />
+//         <Route path="/register" element={<RegisterForm />} />
+//         <Route
+//           path="/welcome"
+//           element={<WelcomePage />} authenticated={authenticated} />
+
+//       </Routes>
+
+//       <pre>{JSON.stringify(userData, 0, 1)}</pre>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 // import { useState } from "react";
 // import reactLogo from "./assets/react.svg";
