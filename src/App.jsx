@@ -8,22 +8,32 @@ import DeleteBlog from "./Pages/deleteBlog.jsx";
 import ReadBlog from "./Pages/readBlog.jsx";
 import UpdateBlog from "./Pages/updateBlog.jsx";
 import HomePage from "./Pages/homePage.jsx";
-import { Routes, Route, Link, Outlet, NavLink } from "react-router-dom";
+import "./Components/Header.css";
+import {
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  NavLink,
+  BrowserRouter,
+} from "react-router-dom";
 
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<homePage />} />
-        <Route path="/homePage" element={<HomePage />} />
-        <Route path="/CreateBlog" element={<CreateBlog />} />
-        <Route path="/DeleteBlog" element={<DeleteBlog />} />
-        <Route path="/ReadBlog" element={<ReadBlog />} />
-        <Route path="/UpdateBlog" element={<UpdateBlog />} />
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route index element={<homePage />} />
+          <Route path="/homePage" element={<HomePage />} />
+          <Route path="/CreateBlog" element={<CreateBlog />} />
+          <Route path="/DeleteBlog" element={<DeleteBlog />} />
+          <Route path="/ReadBlog" element={<ReadBlog />} />
+          <Route path="/UpdateBlog" element={<UpdateBlog />} />
 
-        <Route path="*" element={<NoMatch />} />
-      </Route>
-    </Routes>
+          <Route path="*" element={<NoMatch />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 export default App;
@@ -67,29 +77,21 @@ const Layout = () => {
     <>
       <h1>Create Your Blog Here!!!</h1>
 
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <NavLink to="/homePage" style={style}>
+      <nav>
+        <NavLink className="ul li li-a li-a:hover barWidth" to="/homePage" style={style}>
           Home
-        </NavLink>{" "}
-        |
-        <NavLink to="/createBlog" style={style}>
+        </NavLink>
+        <NavLink className="ul li li-a li-a:hover barWidth" to="/createBlog" style={style}>
           Create Blog
-        </NavLink>{" "}
-        |
-        <NavLink to="/deleteBlog" style={style}>
+        </NavLink>
+        <NavLink
+          className="ul li li-a li-a:hover barWidth" to="/deleteBlog" style={style}>
           Delete Blog
-        </NavLink>{" "}
-        |
-        <NavLink to="/readBlog" style={style}>
+        </NavLink>
+        <NavLink className="ul li li-a li-a:hover barWidth" to="/readBlog" style={style}>
           Read Blog
-        </NavLink>{" "}
-        |
-        <NavLink to="/updateBlog" style={style}>
+        </NavLink>
+        <NavLink className="ul li li-a li-a:hover barWidth" to="/updateBlog" style={style}>
           Update Blog
         </NavLink>
       </nav>
