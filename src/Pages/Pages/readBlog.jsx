@@ -1,5 +1,7 @@
+/** @format */
+
 const ReadBlog = () => {
-    return (  );
-}
- 
+  return <p>Read Blog</p>;
+};
+
 export default ReadBlog;

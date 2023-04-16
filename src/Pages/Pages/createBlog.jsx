@@ -1,5 +1,7 @@
+/** @format */
+
 const CreateBlog = () => {
-    return (  );
-}
- 
+  return <p>Create Blog Page</p>;
+};
+
 export default CreateBlog;

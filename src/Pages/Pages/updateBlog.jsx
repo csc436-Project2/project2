@@ -1,5 +1,7 @@
+/** @format */
+
 const UpdateBlog = () => {
-    return (  );
-}
- 
+  return <p>Update Blog</p>;
+};
+
 export default UpdateBlog;

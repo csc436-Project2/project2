@@ -1,5 +1,7 @@
+/** @format */
+
 const DeleteBlog = () => {
-    return (  );
-}
- 
+  return <p>Delete Blog</p>;
+};
+
 export default DeleteBlog;
