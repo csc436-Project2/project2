@@ -7,64 +7,136 @@ import CreateBlog from "./Pages/createBlog.jsx";
 import DeleteBlog from "./Pages/deleteBlog.jsx";
 import ReadBlog from "./Pages/readBlog.jsx";
 import UpdateBlog from "./Pages/updateBlog.jsx";
-import { Routes, Route, Link } from "react-router-dom";
+import HomePage from "./Pages/homePage.jsx";
+import { Routes, Route, Link, Outlet, NavLink } from "react-router-dom";
 
 function App() {
-  // const [loading, setLoading] = useState(false);
-  // const [data, setData] = useState([]);
-  // const getPosts = async () => {
-  //   setLoading(true);
-  //   const request = await axios.get("http://localhost:3001/v1/api/posts");
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<homePage />} />
+        <Route path='/homePage' element={<HomePage />} />
+        <Route path='/CreateBlog' element={<CreateBlog />} />
+        <Route path='/DeleteBlog' element={<DeleteBlog />} />
+        <Route path='/ReadBlog' element={<ReadBlog />} />
+        <Route path='/UpdateBlog' element={<UpdateBlog />} />
 
-  //   setLoading(false);
-  //   setData(request.data);
-  // };
-  // useEffect(() => {
-  //   getPosts();
-  // }, []);
+        <Route path='*' element={<NoMatch />} />
+      </Route>
+    </Routes>
+  );
+}
+export default App;
 
-  // if (loading) {
-  //   return <p>Loading...</p>;
-  // }
-  // console.log(data);
-  // return (
-  //   <div className='App'>
-  //     Posts:
-  //     {data.map((post) => {
-  //       return <p key={post.id}>Title: {post.title}</p>;
-  //     })}
-  //   </div>
-  // );
+const NoMatch = () => {
+  return <p>There's nothing here: 404!</p>;
+};
+
+// const [loading, setLoading] = useState(false);
+// const [data, setData] = useState([]);
+// const getPosts = async () => {
+//   setLoading(true);
+//   const request = await axios.get("http://localhost:3001/v1/api/posts");
+
+//   setLoading(false);
+//   setData(request.data);
+// };
+// useEffect(() => {
+//   getPosts();
+// }, []);
+
+// if (loading) {
+//   return <p>Loading...</p>;
+// }
+// console.log(data);
+// return (
+//   <div className='App'>
+//     Posts:
+//     {data.map((post) => {
+//       return <p key={post.id}>Title: {post.title}</p>;
+//     })}
+//   </div>
+// );
+
+const Layout = () => {
+  const style = ({ isActive }) => ({
+    fontWeight: isActive ? "bold" : "normal",
+  });
 
   return (
-    <div className='App'>
-      <Header />
+    <>
+      <h1>Create Your Blog Here!!!</h1>
+
+      <nav
+        style={{
+          borderBottom: "solid 1px",
+          paddingBottom: "1rem",
+        }}
+      >
+        <NavLink to='/homePage' style={style}>
+          Home
+        </NavLink>{" "}
+        |
+        <NavLink to='/createBlog' style={style}>
+          Create Blog
+        </NavLink>{" "}
+        |
+        <NavLink to='/deleteBlog' style={style}>
+          Delete Blog
+        </NavLink>{" "}
+        |
+        <NavLink to='/readBlog' style={style}>
+          Read Blog
+        </NavLink>{" "}
+        |
+        <NavLink to='/updateBlog' style={style}>
+          Update Blog
+        </NavLink>
+      </nav>
+
+      <main style={{ padding: "1rem 0" }}>
+        <Outlet />
+      </main>
+    </>
+  );
+};
+
+// <div className='App'>
+{
+  /* <Header />
+      <homePage />
       <CreateBlog />
       <DeleteBlog />
       <ReadBlog />
       <UpdateBlog />
-      <br></br>
-      <p>
+      <br></br> */
+}
+// <p>
+
+{
+  /* <Routes>
+          <Route path='/homePage' element={<homePage />} />
+          <Route path='/createBlog' element={<CreateBlog />} />
+          <Route path='/readBlog' element={<ReadBlog />} />
+          <Route path='/updateBlog' element={<UpdateBlog />} />
+          <Route path='/deleteBlog' element={<DeleteBlog />} />
+        </Routes>
+        <Link to='/homePage'>Home Page</Link> |
         <Link to='/createBlog'>Create Blog</Link> |
         <Link to='/readBlog'>Read Blog</Link>
         {ReadBlog} |<Link to='/updateBlog'>Update Blog</Link>
         {UpdateBlog} |<Link to='/deleteBlog'>Delete Blog</Link>
-        {UpdateBlog}
-      </p>
-      <Routes>
-        <Route path='/welcomePage'>Welcome</Route>
-        <Route path='/createBlog' element={<CreateBlog />} />
-        <Route path='/readBlog' element={<ReadBlog />} />
-        <Route path='/updateBlog' element={<UpdateBlog />} />
-        <Route path='/deleteBlog' element={<DeleteBlog />} />
-      </Routes>
-
-      {/* <pre>{JSON.stringify(userData, 0, 1)}</pre> */}
-    </div>
-  );
+        {UpdateBlog}*/
+}
+// </p>
+{
+  /* <pageRoutes /> */
 }
 
-export default App;
+{
+  /* <pre>{JSON.stringify(userData, 0, 1)}</pre> */
+}
+// </div>
 
 // import { useState } from 'react';
 // import { Routes, Route, Link } from 'react-router-dom';
