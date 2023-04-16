@@ -1,33 +1,65 @@
 /** @format */
 
 import { useState, useEffect } from "react";
-
 import axios from "axios";
+import Header from "./components/Header.jsx";
+import CreateBlog from "./Pages/createBlog.jsx";
+import DeleteBlog from "./Pages/deleteBlog.jsx";
+import ReadBlog from "./Pages/readBlog.jsx";
+import UpdateBlog from "./Pages/updateBlog.jsx";
+import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
-  const getPosts = async () => {
-    setLoading(true);
-    const request = await axios.get("http://localhost:3001/v1/api/posts");
+  // const [loading, setLoading] = useState(false);
+  // const [data, setData] = useState([]);
+  // const getPosts = async () => {
+  //   setLoading(true);
+  //   const request = await axios.get("http://localhost:3001/v1/api/posts");
 
-    setLoading(false);
-    setData(request.data);
-  };
-  useEffect(() => {
-    getPosts();
-  }, []);
+  //   setLoading(false);
+  //   setData(request.data);
+  // };
+  // useEffect(() => {
+  //   getPosts();
+  // }, []);
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-  console.log(data);
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
+  // console.log(data);
+  // return (
+  //   <div className='App'>
+  //     Posts:
+  //     {data.map((post) => {
+  //       return <p key={post.id}>Title: {post.title}</p>;
+  //     })}
+  //   </div>
+  // );
+
   return (
     <div className='App'>
-      Posts:
-      {data.map((post) => {
-        return <p key={post.id}>Title: {post.title}</p>;
-      })}
+      <Header />
+      <CreateBlog />
+      <DeleteBlog />
+      <ReadBlog />
+      <UpdateBlog />
+      <br></br>
+      <p>
+        <Link to='/createBlog'>Create Blog</Link> |
+        <Link to='/readBlog'>Read Blog</Link>
+        {ReadBlog} |<Link to='/updateBlog'>Update Blog</Link>
+        {UpdateBlog} |<Link to='/deleteBlog'>Delete Blog</Link>
+        {UpdateBlog}
+      </p>
+      <Routes>
+        <Route path='/welcomePage'>Welcome</Route>
+        <Route path='/createBlog' element={<CreateBlog />} />
+        <Route path='/readBlog' element={<ReadBlog />} />
+        <Route path='/updateBlog' element={<UpdateBlog />} />
+        <Route path='/deleteBlog' element={<DeleteBlog />} />
+      </Routes>
+
+      {/* <pre>{JSON.stringify(userData, 0, 1)}</pre> */}
     </div>
   );
 }
