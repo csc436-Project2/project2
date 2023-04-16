@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "./components/Header.jsx";
+import Header from "./Components/Header.jsx";
 import CreateBlog from "./Pages/createBlog.jsx";
 import DeleteBlog from "./Pages/deleteBlog.jsx";
 import ReadBlog from "./Pages/readBlog.jsx";
@@ -15,13 +15,13 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<homePage />} />
-        <Route path='/homePage' element={<HomePage />} />
-        <Route path='/CreateBlog' element={<CreateBlog />} />
-        <Route path='/DeleteBlog' element={<DeleteBlog />} />
-        <Route path='/ReadBlog' element={<ReadBlog />} />
-        <Route path='/UpdateBlog' element={<UpdateBlog />} />
+        <Route path="/homePage" element={<HomePage />} />
+        <Route path="/CreateBlog" element={<CreateBlog />} />
+        <Route path="/DeleteBlog" element={<DeleteBlog />} />
+        <Route path="/ReadBlog" element={<ReadBlog />} />
+        <Route path="/UpdateBlog" element={<UpdateBlog />} />
 
-        <Route path='*' element={<NoMatch />} />
+        <Route path="*" element={<NoMatch />} />
       </Route>
     </Routes>
   );
@@ -73,23 +73,23 @@ const Layout = () => {
           paddingBottom: "1rem",
         }}
       >
-        <NavLink to='/homePage' style={style}>
+        <NavLink to="/homePage" style={style}>
           Home
         </NavLink>{" "}
         |
-        <NavLink to='/createBlog' style={style}>
+        <NavLink to="/createBlog" style={style}>
           Create Blog
         </NavLink>{" "}
         |
-        <NavLink to='/deleteBlog' style={style}>
+        <NavLink to="/deleteBlog" style={style}>
           Delete Blog
         </NavLink>{" "}
         |
-        <NavLink to='/readBlog' style={style}>
+        <NavLink to="/readBlog" style={style}>
           Read Blog
         </NavLink>{" "}
         |
-        <NavLink to='/updateBlog' style={style}>
+        <NavLink to="/updateBlog" style={style}>
           Update Blog
         </NavLink>
       </nav>
