@@ -56,6 +56,7 @@ function App() {
   console.log(data);
   return (
     <div className='App'>
+      <PageRoutes data={data} />
       Posts:
       {data.map((post) => {
         return (
@@ -65,6 +66,8 @@ function App() {
           </p>
         );
       })}
+      return
+      {/* <PageRoutes data={data} />; */}
     </div>
   );
 
