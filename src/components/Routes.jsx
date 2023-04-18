@@ -6,7 +6,7 @@ import DeleteBlog from "../Pages/deleteBlog.jsx";
 import ReadBlog from "../Pages/readBlog.jsx";
 import UpdateBlog from "../Pages/updateBlog.jsx";
 
-import HomePage from "../Pages/homePage.jsx";
+import homePage from "../Pages/homePage.jsx";
 import axios from "axios";
 
 // componentDidMount() {
