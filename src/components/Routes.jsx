@@ -35,7 +35,7 @@ const PageRoutes = ({ data }) => {
     <Routes>
       <Route element={<Layout />}>
         <Route index element={<homePage />} />
-        <Route path='/homePage' element={<HomePage data={data} />} />
+        <Route path='/homePage' element={<homePage data={data} />} />
         <Route path='/CreateBlog' element={<CreateBlog />} />
         <Route path='/DeleteBlog' element={<DeleteBlog data={data} />}>
           <Route path=':titleID' element={<DeleteBlog />} />
