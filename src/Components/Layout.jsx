@@ -18,20 +18,16 @@ const Layout = () => {
       >
         <NavLink to='/homePage' style={style}>
           Home
-        </NavLink>{" "}
-        |
+        </NavLink>
         <NavLink to='/createBlog' style={style}>
           Create Blog
-        </NavLink>{" "}
-        |
+        </NavLink>
         <NavLink to='/deleteBlog' style={style}>
           Delete Blog
-        </NavLink>{" "}
-        |
+        </NavLink>
         <NavLink to='/readBlog' style={style}>
           Read Blog
-        </NavLink>{" "}
-        |
+        </NavLink>
         <NavLink to='/updateBlog' style={style}>
           Update Blog
         </NavLink>
