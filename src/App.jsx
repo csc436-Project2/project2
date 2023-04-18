@@ -1,5 +1,5 @@
 /** @format */
-import './Components/Header.css';
+import './components/Header.css';
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -78,7 +78,9 @@ function App() {
 
   //   navigate("/homePage");
   // };
+  
   return <PageRoutes titles={titles} onRemoveItem={handleRemoveBlog} />;
+
 }
 
 export default App;
