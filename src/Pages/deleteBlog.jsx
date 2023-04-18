@@ -1,14 +1,22 @@
 /** @format */
 
-import { Routes, Route, Link, Outlet, NavLink } from "react-router-dom";
+import {
+  useParams,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  NavLink,
+} from "react-router-dom";
 
-const DeleteBlog = ({ titles }) => {
+const DeleteBlog = ({ data }) => {
+  const { titleID } = useParams();
   return (
     <>
-      <h2>Titles</h2>
+      <h2>Title to Delete</h2>
 
       <ul>
-        {titles.map((title) => (
+        {data.map((title) => (
           <li key={title.id}>
             <Link to={`/titles/${title.id}`}>
               {title.title} | {title.description} | {title.timePublished}{" "}

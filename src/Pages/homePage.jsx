@@ -1,10 +1,19 @@
 /** @format */
 
-const HomePage = () => {
+const HomePage = ({ data }) => {
   return (
-    <main style={{ padding: "1rem 0" }}>
-      <h2>Home Page</h2>
-    </main>
+    <div className='App'>
+      <h1>Home Page</h1>
+      Posts:
+      {data.map((post) => {
+        return (
+          <p key={post.id}>
+            Title: {post.title} | Last Updated: {post.last_updated} | Published
+            Date: {post.originally_published}
+          </p>
+        );
+      })}
+    </div>
   );
 };
 

@@ -7,13 +7,13 @@ import {
   NavLink as RouterLink,
 } from "react-router-dom";
 
-const ReadBlog = ({ titles }) => {
+const ReadBlog = ({ data }) => {
   return (
     <>
-      <h2>Titles</h2>
+      <h2>Pick a Blog To Read</h2>
 
       <ul>
-        {titles.map((title) => (
+        {data.map((title) => (
           <li key={title.id}>
             <Link to={`/titles/${title.id}`}>
               {title.title} | {title.description} | {title.timePublished}{" "}

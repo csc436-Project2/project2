@@ -8,23 +8,77 @@ import DeleteBlog from "./Pages/deleteBlog.jsx";
 import ReadBlog from "./Pages/readBlog.jsx";
 import UpdateBlog from "./Pages/updateBlog.jsx";
 import HomePage from "./Pages/homePage.jsx";
-import { Routes, Route, Link, Outlet, NavLink } from "react-router-dom";
+import PageRoutes from "./components/Routes.jsx";
+
+import {
+  useNavigate,
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  NavLink,
+  useParams,
+} from "react-router-dom";
 
 function App() {
-  return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route index element={<homePage />} />
-        <Route path="/homePage" element={<HomePage />} />
-        <Route path="/CreateBlog" element={<CreateBlog />} />
-        <Route path="/DeleteBlog" element={<DeleteBlog />} />
-        <Route path="/ReadBlog" element={<ReadBlog />} />
-        <Route path="/UpdateBlog" element={<UpdateBlog />} />
+  const navigate = useNavigate();
+  const titles = [
+    {
+      id: "10",
+      title: "Blog Post Number 1",
+      description: "This is a Blog Post About 1",
+      timePublished: "Time Published",
+    },
+    {
+      id: "11",
+      title: "Blog Post Number 2",
+      description: "This is a Blog Post About 2",
+      timePublished: "Time Published",
+    },
+  ];
 
-        <Route path="*" element={<NoMatch />} />
-      </Route>
-    </Routes>
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const getPosts = async () => {
+    setLoading(true);
+    const request = await axios.get("http://localhost:3001/v1/api/posts");
+
+    setLoading(false);
+    setData(request.data);
+  };
+  useEffect(() => {
+    getPosts();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  console.log(data);
+  return (
+    <div className='App'>
+      <PageRoutes data={data} />
+      Posts:
+      {data.map((post) => {
+        return (
+          <p key={post.id}>
+            Title: {post.title} | Last Updated: {post.last_updated} | Published
+            Date: {post.originally_published}
+          </p>
+        );
+      })}
+      return
+      {/* <PageRoutes data={data} />; */}
+    </div>
   );
+
+  // const [blogTitles, setBlogTitles] = useState(titles);
+
+  // const handleRemoveBlog = (titleID) => {
+  //   setBlogTitles((state) => state.filter((title) => title.id !== titleID));
+
+  //   navigate("/homePage");
+  // };
+  return <PageRoutes titles={titles} onRemoveItem={handleRemoveBlog} />;
 }
 
 export default App;
@@ -72,16 +126,20 @@ const Layout = () => {
       >
         <NavLink to="/homePage" style={style}>
           Home
-        </NavLink>
+        </NavLink>{" "}
+        |
         <NavLink to="/createBlog" style={style}>
           Create Blog
-        </NavLink>
+        </NavLink>{" "}
+        |
         <NavLink to="/deleteBlog" style={style}>
           Delete Blog
-        </NavLink>
+        </NavLink>{" "}
+        |
         <NavLink to="/readBlog" style={style}>
           Read Blog
-        </NavLink>
+        </NavLink>{" "}
+        |
         <NavLink to="/updateBlog" style={style}>
           Update Blog
         </NavLink>
