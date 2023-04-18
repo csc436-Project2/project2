@@ -1,9 +1,11 @@
 /** @format */
 import React from "react";
+import CRUD from "./CRUD";
 const CreateBlog = () => {
   return (
     <div>
-      <>
+      <CRUD />
+      {/* <>
         <main style={{ padding: "1rem 0" }}>
           <h2>Create Blog Page</h2>
           <label>Blog To Create: </label>
@@ -19,7 +21,7 @@ const CreateBlog = () => {
             placeHolder='Blog Body Here'
           />
         </main>
-      </>
+      </> */}
     </div>
   );
 };
