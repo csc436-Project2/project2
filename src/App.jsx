@@ -1,4 +1,5 @@
 /** @format */
+import './Components/Header.css';
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -7,7 +8,7 @@ import CreateBlog from "./Pages/createBlog.jsx";
 import DeleteBlog from "./Pages/deleteBlog.jsx";
 import ReadBlog from "./Pages/readBlog.jsx";
 import UpdateBlog from "./Pages/updateBlog.jsx";
-import homePage from "./Pages/homePage.jsx";
+import HomePage from "./Pages/homePage.jsx";
 import PageRoutes from "./components/Routes.jsx";
 import DeleteButton from "./components/deleteButton.jsx";
 import {
@@ -59,7 +60,6 @@ function App() {
   return (
     <div className='App'>
       <PageRoutes data={data} />
-      Posts:
       {data.map((post) => {
         return (
           <div key={post.id}>

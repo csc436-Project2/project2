@@ -1,5 +1,6 @@
 /** @format */
 import { Routes, Route, Link, Outlet, NavLink } from "react-router-dom";
+import "./Header.css";
 
 const Layout = () => {
   const style = ({ isActive }) => ({
@@ -10,29 +11,20 @@ const Layout = () => {
     <>
       <h1>Brian and Chris Blog Site</h1>
 
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <NavLink to='/homePage' style={style}>
+      <nav>
+        <NavLink className="ul li li-a li-a:hover" to='/homePage' style={style}>
           Home
-        </NavLink>{" "}
-        |
-        <NavLink to='/createBlog' style={style}>
+        </NavLink>
+        <NavLink className="ul li li-a li-a:hover" to='/createBlog' style={style}>
           Create Blog
-        </NavLink>{" "}
-        |
-        <NavLink to='/deleteBlog' style={style}>
+        </NavLink>
+        <NavLink className="ul li li-a li-a:hover" to='/deleteBlog' style={style}>
           Delete Blog
-        </NavLink>{" "}
-        |
-        <NavLink to='/readBlog' style={style}>
+        </NavLink>
+        <NavLink className="ul li li-a li-a:hover" to='/readBlog' style={style}>
           Read Blog
-        </NavLink>{" "}
-        |
-        <NavLink to='/updateBlog' style={style}>
+        </NavLink>
+        <NavLink className="ul li li-a li-a:hover" to='/updateBlog' style={style}>
           Update Blog
         </NavLink>
       </nav>

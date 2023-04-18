@@ -1,8 +1,8 @@
 /** @format */
-
-const homePage = ({ data }) => {
+import "./Pages.css"
+const HomePage = ({ data }) => {
   return (
-    <div className='App'>
+    <div className='App screen'>
       <h1>Home Page</h1>
       Posts:
       {data.map((post) => {
@@ -17,4 +17,4 @@ const homePage = ({ data }) => {
   );
 };
 
-export default homePage;
+export default HomePage;
