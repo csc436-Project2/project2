@@ -1,3 +1,9 @@
 body{
     background-color: rgb(161, 161, 163);
+    
+}
+
+.App{
+    display:flex;
+    flex-direction: column;
 }
