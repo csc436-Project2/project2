@@ -1,6 +1,6 @@
 /** @format */
 
-const HomePage = ({ data }) => {
+const homePage = ({ data }) => {
   return (
     <div className='App'>
       <h1>Home Page</h1>
@@ -17,4 +17,4 @@ const HomePage = ({ data }) => {
   );
 };
 
-export default HomePage;
+export default homePage;

@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 
 const DeleteBlog = ({ data }) => {
-  const { titleID } = useParams();
+  // const { titleID } = useParams();
   return (
     <>
       <h2>Title to Delete</h2>
@@ -20,6 +20,7 @@ const DeleteBlog = ({ data }) => {
           <li key={title.id}>
             <Link to={`/titles/${title.id}`}>
               {title.title} | {title.description} | {title.timePublished}{" "}
+              <button>delete</button>
             </Link>
           </li>
         ))}
