@@ -1,4 +1,4 @@
-import {createStore} from "redux"
+import {createStore} from "react-redux"
 
 const initialState = {
     amount: "12.00",
