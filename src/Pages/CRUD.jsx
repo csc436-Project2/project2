@@ -1,6 +1,6 @@
 /** @format */
 import React, { useState, useEffect } from "react";
-
+import axios from "axios";
 const CRUD = () => {
   const [formData, setFormData] = useState({
     title: "",
@@ -8,7 +8,10 @@ const CRUD = () => {
     content: "",
   });
 
+  const [editId, setEditId] = useState();
+
   const [data, setData] = useState([]);
+  const [refresh, setRefresh] = useState(0);
 
   const { title, id, content } = formData;
 
@@ -19,25 +22,56 @@ const CRUD = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && id && content) {
-      setData([...data, formData]);
-      setFormData({ title: "", id: "", content: "" });
+      axios
+        .post("http://localhost:3001/v1/api/posts", formData)
+        .then((res) => {
+          setData([...data, res.data]);
+          setFormData({ title: "", id: "", content: "" });
+        })
+        .catch((err) => console.log(err));
     }
   };
 
-  const handleDelete = (index) => {
-    const newData = data.filter((item, i) => i !== index);
-    setData(newData);
+  const handleUpdate = (editId) => {
+    if (title && id && content) {
+      axios
+        .put(`http://localhost:3001/v1/api/posts${editId}`, formData)
+        .then((res) => {
+          setFormData({ title: "", id: "", content: "" });
+          setRefresh(refresh + 1);
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
-  const handleEdit = (index) => {
-    const itemToEdit = data[index];
-    setFormData(itemToEdit);
-    handleDelete(index);
+  const handleDelete = (deletedId) => {
+    axios
+      .delete(`http://localhost:3001/v1/api/posts/${deletedId}`, {
+        params: title,
+      })
+      .then((res) => {
+        console.log("DELETE RECORD:::::::::", res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const handleEdit = (editIDNotState) => {
+    axios
+      .get(`http://localhost:3001/v1/api/posts/${editIDNotState}`)
+      .then((res) => {
+        setFormData(res.data);
+      })
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
-    console.log("Data", data);
-  }, [data]);
+    axios
+      .get("http://localhost:3001/v1/api/posts")
+      .then((res) => {
+        setData(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, [refresh]);
 
   return (
     <div className='container'>
@@ -86,6 +120,16 @@ const CRUD = () => {
             <button type='submit' className='btn btn-primary'>
               Submit
             </button>
+            <button
+              type='update'
+              className='btn btn-primary'
+              onClick={() => {
+                handleUpdate(item.id);
+                setEditId(item.id);
+              }}
+            >
+              Update
+            </button>
           </form>
 
           <hr />
@@ -108,13 +152,19 @@ const CRUD = () => {
                   <td>
                     <button
                       className='btn btn-warning'
-                      onClick={() => handleEdit(index)}
+                      onClick={() => {
+                        handleEdit(item.id);
+                        setEditId(item.id);
+                      }}
                     >
                       Edit
                     </button>{" "}
                     <button
                       className='btn btn-warning'
-                      onClick={() => handleDelete(index)}
+                      onClick={() => {
+                        handleDelete(item.id);
+                        setEditId(item.id);
+                      }}
                     >
                       Delete
                     </button>

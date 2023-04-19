@@ -1,10 +1,12 @@
 /** @format */
-import "./Pages.css"
+import CRUD from "./CRUD";
+import "./Pages.css";
 const HomePage = ({ data }) => {
   return (
     <div className='App'>
       <h1>Home Page</h1>
       Posts:
+      <CRUD />
       {/* {data.map((post) => {
         return (
           <p key={post.id}>

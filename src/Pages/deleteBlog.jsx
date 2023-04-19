@@ -8,12 +8,13 @@ import {
   Outlet,
   NavLink,
 } from "react-router-dom";
-
-const DeleteBlog = ({ data }) => {
+import CRUD from "./CRUD";
+const DeleteBlog = () => {
   // const { titleID } = useParams();
   return (
     <>
-      <h2>Title to Delete</h2>
+      <CRUD />
+      {/* <h2>Title to Delete</h2>
 
       <ul>
         {data.map((title) => (
@@ -24,7 +25,7 @@ const DeleteBlog = ({ data }) => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </>
   );
 };

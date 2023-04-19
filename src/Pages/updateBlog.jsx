@@ -7,14 +7,16 @@ import {
   Outlet,
   NavLink as RouterLink,
 } from "react-router-dom";
+import CRUD from "./CRUD";
 
 const UpdateBlog = ({ data }) => {
   return (
     <>
       <h1>Update Your Blog</h1>
       <h2>Titles</h2>
+      <CRUD />
 
-      <ul>
+      {/* <ul>
         {data.map((title) => (
           <li key={title.id}>
             <Link to={`/titles/${title.id}`}>
@@ -22,7 +24,7 @@ const UpdateBlog = ({ data }) => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </>
   );
 };
