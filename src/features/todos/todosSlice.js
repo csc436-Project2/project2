@@ -1,7 +1,4 @@
-/** @format */
-
 import { createSlice } from "@reduxjs/toolkit";
-
 const todosSlice = createSlice({
   name: "todos",
   initialState: [],
@@ -19,6 +16,5 @@ const todosSlice = createSlice({
     },
   },
 });
-
 export const { todoAdded, todoToggled } = todosSlice.actions;
 export default todosSlice.reducer;
