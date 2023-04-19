@@ -19,6 +19,7 @@ const CRUD = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  //create
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title && id && content) {
@@ -32,6 +33,7 @@ const CRUD = () => {
     }
   };
 
+  //update
   const handleUpdate = (editId) => {
     if (title && id && content) {
       axios
@@ -44,6 +46,7 @@ const CRUD = () => {
     }
   };
 
+  //delete
   const handleDelete = (deletedId) => {
     axios
       .delete(`http://localhost:3001/v1/api/posts/${deletedId}`, {
@@ -55,6 +58,7 @@ const CRUD = () => {
       .catch((err) => console.log(err));
   };
 
+  
   const handleEdit = (editIDNotState) => {
     axios
       .get(`http://localhost:3001/v1/api/posts/${editIDNotState}`)
