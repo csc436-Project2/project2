@@ -1,4 +1,4 @@
-import {createStore} from "react-redux"
+import {createStore} from "redux"
 
 const initialState = {
     data: [],
@@ -54,7 +54,7 @@ function reducer(state = initialState, action){
     return state;
 }
 
-export const store = createStore(reducer);
+export const Store = createStore(reducer);
 
 //to tell our project about store, 
 //add the following to some file in the project

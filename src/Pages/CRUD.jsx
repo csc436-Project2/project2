@@ -33,12 +33,19 @@ const CRUD = () => {
     }
   };
 
+  // const [formData, setFormData] = useState({
+  //   title: "",
+  //   id: "",
+  //   content: "",
+  // });
+
   //update
-  const handleUpdate = (editId) => {
+  const handleUpdate = () => {
     if (title && id && content) {
       axios
-        .put(`http://localhost:3001/v1/api/posts${editId}`, formData)
+        .patch(`http://localhost:3001/v1/api/posts/${editId}`, formData)
         .then((res) => {
+          console.log(res);
           setFormData({ title: "", id: "", content: "" });
           setRefresh(refresh + 1);
         })
@@ -125,11 +132,12 @@ const CRUD = () => {
               Submit
             </button>
             <button
-              type='update'
+              type="button"
               className='btn btn-primary'
               onClick={() => {
-                handleUpdate(item.id);
-                setEditId(item.id);
+                setEditId(formData.id);
+                handleUpdate();
+                
               }}
             >
               Update
@@ -148,17 +156,17 @@ const CRUD = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item, index) => (
+              {data.map((post, index) => (
                 <tr key={index}>
-                  <td>{item.title}</td>
-                  <td>{item.id}</td>
-                  <td>{item.content}</td>
+                  <td>{post.title}</td>
+                  <td>{post.id}</td>
+                  <td>{post.content}</td>
                   <td>
                     <button
                       className='btn btn-warning'
                       onClick={() => {
-                        handleEdit(item.id);
-                        setEditId(item.id);
+                        handleEdit(post.id);
+                        setEditId(post.id);
                       }}
                     >
                       Edit
@@ -166,8 +174,8 @@ const CRUD = () => {
                     <button
                       className='btn btn-warning'
                       onClick={() => {
-                        handleDelete(item.id);
-                        setEditId(item.id);
+                        handleDelete(post.id);
+                        setEditId(post.id);
                       }}
                     >
                       Delete
