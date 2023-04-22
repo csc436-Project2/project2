@@ -6,7 +6,7 @@ import DeleteBlog from "../Pages/deleteBlog.jsx";
 import ReadBlog from "../Pages/readBlog.jsx";
 import UpdateBlog from "../Pages/updateBlog.jsx";
 
-import HomePage from "../Pages/HomePage.jsx";
+import HomePage from "../Pages/homePage.jsx";
 import axios from "axios";
 
 // componentDidMount() {
@@ -34,7 +34,7 @@ const PageRoutes = ({ data }) => {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<HomePage />} />
+        <Route index element={<homePage />} />
         <Route path='/HomePage' element={<HomePage data={data} />} />
         <Route path='/CreateBlog' element={<CreateBlog />} />
         <Route path='/DeleteBlog' element={<DeleteBlog data={data} />}>
