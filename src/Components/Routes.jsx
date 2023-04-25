@@ -34,7 +34,7 @@ const PageRoutes = ({ data }) => {
   return (
     <Routes>
       <Route element={<Layout />}>
-        <Route index element={<homePage />} />
+        <Route index element={<HomePage />} />
         <Route path='/HomePage' element={<HomePage data={data} />} />
         <Route path='/CreateBlog' element={<CreateBlog />} />
         <Route path='/DeleteBlog' element={<DeleteBlog data={data} />}>
