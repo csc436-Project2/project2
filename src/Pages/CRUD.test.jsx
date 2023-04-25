@@ -8,10 +8,10 @@ import { describe, it, expect } from "vitest";
 //   handleDelete,
 // } from "./src/store";
 // import { blogReducer } from "./src/store.js";
-// import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 // import App, { getPosts } from "./src/App";
-import { blogReducer } from "./store";
+import { blogReducer } from "../store";
 
 const blogOne = {
   title: "Blog Post #1",
@@ -62,8 +62,8 @@ describe("handleChange component", () => {
 
 describe("handleSubmit component", () => {
   it("Adds a blog when clicking the submitButton", () => {
-    const action = { type: "create", payload: blogOne };
-    const state = { data: [], isLoading: false, isError: false };
+    const action = { type: "submit", payload: blogOne };
+    const state = { data: [blogOne], isLoading: false, isError: false };
 
     const newState = blogReducer(state, action);
     const expectedState = {
@@ -72,7 +72,7 @@ describe("handleSubmit component", () => {
       isError: false,
     };
 
-    expect(newState).toBe(expectedState);
+    expect(newState).toEqual(expectedState);
   });
 });
 
@@ -80,5 +80,21 @@ describe("handleEdit component", () => {
   it("updates a blog when clicking the updateButton", () => {});
 });
 describe("handleDelete component", () => {
-  it("updates a blog when clicking the updateButton", () => {});
+  it("updates a blog when clicking the updateButton", () => {
+    const action = { type: "update", payload: blogOne };
+    const state = {
+      data: [blogOne],
+      isLoading: false,
+      isError: false,
+    };
+
+    const newState = blogReducer(state, action);
+    const expectedState = {
+      data: [blogOne],
+      isLoading: false,
+      isError: false,
+    };
+
+    expect(newState).toEqual(expectedState);
+  });
 });
