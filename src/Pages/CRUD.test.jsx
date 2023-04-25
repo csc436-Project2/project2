@@ -11,7 +11,7 @@ import { describe, it, expect } from "vitest";
 // import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 
 // import App, { getPosts } from "./src/App";
-import store, { BlogReducer } from "./store";
+import { blogReducer } from "./store";
 
 const blogOne = {
   title: "Blog Post #1",
@@ -26,21 +26,21 @@ const blogTwo = {
 
 const blogs = [blogOne, blogTwo];
 
-describe("blogReducer", () => {
-  it("adds an item to the array", () => {
-    const action = { type: "create", payload: blogOne };
-    const state = { data: [], isLoading: false, isError: false };
+// describe("blogReducer", () => {
+//   it("adds an item to the array", () => {
+//     const action = { type: "create", payload: blogOne };
+//     const state = { data: [], isLoading: false, isError: false };
 
-    const newState = blogReducer(state, action);
-    const expectedState = {
-      data: [blogOne],
-      isLoading: false,
-      isError: false,
-    };
+//     const newState = blogReducer(state, action);
+//     const expectedState = {
+//       data: [blogOne],
+//       isLoading: false,
+//       isError: false,
+//     };
 
-    expect(newState).toBe(expectedState);
-  });
-});
+//     expect(newState).toBe(expectedState);
+//   });
+// });
 
 describe("Something truthy and falsy", () => {
   it("true to be true", () => {
@@ -61,8 +61,21 @@ describe("handleChange component", () => {
 });
 
 describe("handleSubmit component", () => {
-  it("updates a blog when clicking the updateButton", () => {});
+  it("Adds a blog when clicking the submitButton", () => {
+    const action = { type: "create", payload: blogOne };
+    const state = { data: [], isLoading: false, isError: false };
+
+    const newState = blogReducer(state, action);
+    const expectedState = {
+      data: [blogOne],
+      isLoading: false,
+      isError: false,
+    };
+
+    expect(newState).toBe(expectedState);
+  });
 });
+
 describe("handleEdit component", () => {
   it("updates a blog when clicking the updateButton", () => {});
 });
