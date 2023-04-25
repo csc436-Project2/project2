@@ -56,6 +56,8 @@ function reducer(state = initialState, action){
 
 export const Store = createStore(reducer);
 
+export {blogReducer};
+
 //to tell our project about store, 
 //add the following to some file in the project
 
